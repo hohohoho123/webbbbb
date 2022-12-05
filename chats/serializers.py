@@ -82,14 +82,14 @@ class UsersWithMessageSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField()
-    photo = serializers.ImageField(source='profile.photo')
+    # photo = serializers.ImageField(source='profile.photo')
     online = serializers.BooleanField(source='profile.online')
     status = serializers.CharField(source='profile.status')
     messages = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ('name', 'username', 'photo', 'online', 'status', 'messages')
+        fields = ('name', 'username',  'online', 'status', 'messages')
 
     def get_name(self, obj):
         if obj.first_name:
@@ -103,7 +103,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     # name = serializers.SerializerMethodField()
-    photo = serializers.ImageField(source='profile.photo')
+    # photo = serializers.ImageField(source='profile.photo')
     online = serializers.BooleanField(source='profile.online')
     gender = serializers.CharField(source='profile.gender')
     relationship = serializers.CharField(source='profile.relationship')
@@ -112,8 +112,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     phone_number = serializers.CharField(source='profile.phone_number')
     class Meta:
         model = User
-        fields = ( 'username', 'photo', 'online','phone_number','gender','relationship','detaillocation','location')
+        fields = ('online','phone_number','gender','relationship','detaillocation','location')
 
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
     # def get_name(self, obj):
     #     if obj.first_name:
     #         return obj.get_full_name()
@@ -235,3 +237,23 @@ class ChangePasswordSerializer(serializers.Serializer):
     """
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+
+
+
+from chats.models import ImageUpload
+
+class  ImageUploadSerializer(serializers.ModelSerializer):
+    # def test(self, data):
+    #     print(data['images'])
+    class Meta:        
+        model = ImageUpload
+        fields = '__all__'
+
+from chats.models import UserProfileModel
+
+class UserProfileSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = UserProfileModel
+        fields = '__all__'

@@ -6,13 +6,16 @@ from django.urls import path, include
 from chats.views1.call_view import *
 from chats.views1.message_view import *
 from chats.views1.auth_view import *
+from chats.views1.auth_view import ProfileViewset
 from . import views_second
 # from chat_app import settings
 from rest_framework.routers import DefaultRouter
 from rest_framework import routers
-
+img = DefaultRouter()
+img.register(r'imageupload', ImageUploadViewSet)
 router = routers.DefaultRouter()
 router.register('profile', LeadViewset, 'profile')
+router.register('userprofile', ProfileViewset, 'userprofile')
 
 
 urlpatterns = [
@@ -24,6 +27,7 @@ urlpatterns = [
     path('message/', MessageView.as_view()),
     path('start-call/', StartCall.as_view()),
     path('end-call/', EndCall.as_view()),
+    path('api/', include(img.urls)),
     # path('location/', Location.as_view()),
     path('location/', views_second.location, name='location'),
     path('', include(router.urls)),
@@ -33,4 +37,5 @@ urlpatterns = [
     # path('update_profile/', UpdateProfileView.as_view(), name='auth_update_profile'),
     # path('test-socket/', test_socket),
     # path("<str:room_name>/",room , name="room"),
+
 ]

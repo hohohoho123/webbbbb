@@ -167,11 +167,13 @@ class LeadViewset(viewsets.ModelViewSet):
     #     permissions.IsAuthenticated
     # ]
     def get_queryset(self):
-        a=User.objects.filter(username=self.request.user)
-        return a
-
-    def perform_create(self, serializer):
-        print("[+]debug ")
+        print(self.request.user)
+        return User.objects.filter(username=self.request.user)
+    def perform_update(self, serializer):
+        # Save with the new value for the target model fields
+        username = self.request.user
+     # def perform_create(self, serializer):
+    #     serializer.save(username=self.request.user)
         # serializer.save(user=self.request.user)
 
     # def get_queryset(self):
@@ -234,4 +236,38 @@ class UpdateProfileView(generics.UpdateAPIView):
 #         serializer = LocationSerializer(todos, many=True)
 
 #         return Response(serializer.data, status=status.HTTP_200_OK)
+
+from chats.models import ImageUpload
+from chats.serializers import ImageUploadSerializer
+
+class ImageUploadViewSet(viewsets.ModelViewSet):
+    queryset = ImageUpload.objects.all()
+
+    serializer_class = ImageUploadSerializer
+    authentication_classes = [BearerAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+
+from chats.models import UserProfileModel
+from chats.serializers import ProfileSerializer
+
+class ProfileViewset(viewsets.ModelViewSet):
+    serializer_class = UserProfileSerializer
+    authentication_classes = [BearerAuthentication]
+    permission_classes = [IsAuthenticated]
+    # def get_queryset(self):
+    #     print ("Profile:SADASD")
+    #     print(self.request.user)
+
+    #     return User.objects.filter(username=self.request.user)
+    queryset = UserProfileModel.objects.all()
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+
 
