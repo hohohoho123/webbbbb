@@ -100,7 +100,7 @@ const ChangePass: React.FC<Props> = () => {
                                 
                                 }
                             };
-                            axios.put(`http://localhost:8000/chat-app/change-password/`,{
+                            axios.put(`https://web-project-wzlk.onrender.com/chat-app/change-password/`,{
                                 old_password: oldPassword,
                                 new_password: newPassword
                             },config)

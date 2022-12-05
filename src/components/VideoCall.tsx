@@ -144,7 +144,7 @@ const VideoCall: React.FC = () => {
         }
       }
 
-      axios.post('  http://localhost:8000/chat-app/start-call/', data, config).then(response => {
+      axios.post('  https://web-project-wzlk.onrender.com/chat-app/start-call/', data, config).then(response => {
         console.log(response)
       }).catch(error => {
         // console.log(error.response)
@@ -157,7 +157,7 @@ const VideoCall: React.FC = () => {
     }
   }, [peerId])
 
-  const socket = new WebSocket(`ws://localhost:8000/ws/message/${peerId}/`)
+  const socket = new WebSocket(`wss://web-project-wzlk.onrender.com/ws/message/${peerId}/`)
   console.log(peerId)
   socket.onmessage = (event) => {
     console.log(event)
@@ -191,7 +191,7 @@ const VideoCall: React.FC = () => {
       }
     };
 
-    axios.post('http://localhost:8000/chat-app/end-call/', data, config).then(response => {
+    axios.post('https://web-project-wzlk.onrender.com/chat-app/end-call/', data, config).then(response => {
       // console.log(response)
     }).catch(error => {
       // console.log(error.response)

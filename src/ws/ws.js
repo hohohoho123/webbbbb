@@ -1,8 +1,8 @@
 
 
 const myUser = JSON.parse(localStorage.getItem('user') || '{}')
-export const statusSocket = new WebSocket(`ws://localhost:8000/ws/notification/${myUser.username}/`)
-export const chatSocket = new WebSocket(`ws://localhost:8000/ws/message/${myUser.username}/`)
+export const statusSocket = new WebSocket(`wss://web-project-wzlk.onrender.com/ws/notification/${myUser.username}/`)
+export const chatSocket = new WebSocket(`wss://web-project-wzlk.onrender.com/ws/message/${myUser.username}/`)
 export function test(username) {
     alert(username)
 }

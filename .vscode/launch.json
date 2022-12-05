@@ -2,9 +2,9 @@
     "configurations": [
         {
             "type": "chrome",
-            "name": "http://localhost:8000:3000/videocall/huyen",
+            "name": "https://web-project-wzlk.onrender.com:3000/videocall/huyen",
             "request": "launch",
-            "url": "http://localhost:8000:3000/videocall/huyen"
+            "url": "https://web-project-wzlk.onrender.com:3000/videocall/huyen"
         }
     ]
 }

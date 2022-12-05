@@ -23,7 +23,7 @@ const Profile : React.FC = () => {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         };
-        axios.get('http://localhost:8000/chat-app/profile/?format=json', config)
+        axios.get('https://web-project-wzlk.onrender.com/chat-app/profile/?format=json', config)
             .then((res) => {
                 setUser(res.data[0])
             })

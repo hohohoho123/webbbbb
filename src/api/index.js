@@ -6,7 +6,7 @@ export const auth = async () => {
 };
 
 export const signup = async (data) => {
-  const res = await axios.post("http://localhost:8000/chat-app/registration/", data);
+  const res = await axios.post("https://web-project-wzlk.onrender.com/chat-app/registration/", data);
   return res.data;
 };
 
@@ -14,7 +14,7 @@ export const login = async (data) => {
   
 
 
-  const res = await axios.post("http://localhost:8000/chat-app/login/", data);
+  const res = await axios.post("https://web-project-wzlk.onrender.com/chat-app/login/", data);
   localStorage.setItem('user',JSON.stringify(res.data.user))
   
   return res.data;
@@ -33,7 +33,7 @@ export const getAllUsers = async (id) => {
   // const bodyParameters = {
   //   key: "value"
   // };
-  const res = await axios.get(`  http://localhost:8000/chat-app/users/`, config);
+  const res = await axios.get(`  https://web-project-wzlk.onrender.com/chat-app/users/`, config);
   
   
 
@@ -58,12 +58,12 @@ export const sendMessage = async (data) => {
   //   headers: { Authorization: `Bearer ${token}` }
   // };
   const username = localStorage.getItem('user').username
-  const res = await axios.post(`  http://localhost:8000/chat-app/ws/message/${username}`, data);
+  const res = await axios.post(`  https://web-project-wzlk.onrender.com/chat-app/ws/message/${username}`, data);
   return res.data;
 };
 
 export const getMessage = async (data) => {
-  // const res = await axios.get("  http://localhost:8000/chat-app/users/", data);
+  // const res = await axios.get("  https://web-project-wzlk.onrender.com/chat-app/users/", data);
   const token = localStorage.getItem('token')
 
   const config = {
@@ -75,7 +75,7 @@ export const getMessage = async (data) => {
   // const bodyParameters = {
   //   key: "value"
   // };
-  const res = await axios.get(`http://localhost:8000/chat-app/users/`, config);
+  const res = await axios.get(`https://web-project-wzlk.onrender.com/chat-app/users/`, config);
 
   return res.data;
 };

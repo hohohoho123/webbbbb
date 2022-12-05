@@ -129,7 +129,7 @@ const Signup: React.FC = () => {
     const data = {
       email: email
     }
-    axios.post('  http://localhost:8000/api/password_reset/', data)
+    axios.post('  https://web-project-wzlk.onrender.com/api/password_reset/', data)
       .then((res) => {
         console.log(res);
         if (res.data.status === 'OK') {

@@ -69,7 +69,7 @@ const ForgetPass: React.FC = () => {
                         onClick={() => {
                             
                             console.log(tokens.token)
-                            axios.post(`  http://localhost:8000/api/password_reset/confirm/`,{
+                            axios.post(`  https://web-project-wzlk.onrender.com/api/password_reset/confirm/`,{
                                 token: tokens.token,
                                 password: password
                             })

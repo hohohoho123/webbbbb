@@ -77,7 +77,7 @@ const Userlist : React.FC = () => {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         };
-        axios.get("http://localhost:8000/chat-app/location/", config)
+        axios.get("https://web-project-wzlk.onrender.com/chat-app/location/", config)
         .then(res => setUsers(res.data))
         
     },[])

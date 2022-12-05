@@ -224,7 +224,7 @@ const Header: React.FC = () => {
   //                           Authorization: `Bearer ${token}`
   //                         }
   //                       }
-  //                       axios.post(`http://localhost:8000/chat-app/logout/`, config)
+  //                       axios.post(`https://web-project-wzlk.onrender.com/chat-app/logout/`, config)
   //                         .then(response => console.log(response.data))
   //                       // navigate("/signup")
   //                     }}>Sign out</Dropdown.Item>
@@ -246,7 +246,7 @@ const Header: React.FC = () => {
         const helo = {
             headers: { 'Authorization': `Bearer ${token}` }
         };
-        axios.post("http://localhost:8000/chat-app/logout/?format=json",{}, helo)
+        axios.post("https://web-project-wzlk.onrender.com/chat-app/logout/?format=json",{}, helo)
         .then((res) => {
           // console.log(res);
           if (res.data.message === 'logout') {

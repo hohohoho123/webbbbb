@@ -52,7 +52,7 @@ function VideoCall() {
         // console.log(callusername)
         // console.log(data)
 
-        axios.post('  http://localhost:8000/chat-app/start-call/', data, config).then(response => {
+        axios.post('  https://web-project-wzlk.onrender.com/chat-app/start-call/', data, config).then(response => {
         // console.log(response)
         }).catch(error => {
         // console.log(error.response)

@@ -139,7 +139,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
     
     if (status === "new_call") {
       // console.log(status)
-      window.open(`https://localhost:3000/answercall/${JSON.parse(e.data).message.data.sender}`)
+      window.open(`https://webbbbbbbb.vercel.app/answercall/${JSON.parse(e.data).message.data.sender}`)
     }
     const data = JSON.parse(e.data).text
     // setSocket(io('/'));
@@ -168,7 +168,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
   //   // const bodyParameters = {
   //   //   key: "value"
   //   // };
-  //   const res = await axios.get(`  http://localhost:8000/chat-app/users/`, config);
+  //   const res = await axios.get(`  https://web-project-wzlk.onrender.com/chat-app/users/`, config);
 
   //   const result = res.data.filter(function (el: any) {
   //     return el.username === username 
@@ -391,7 +391,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                     
                   }
                 };
-                axios.post(`  http://localhost:8000/chat-app/message/`, datalog, config)
+                axios.post(`  https://web-project-wzlk.onrender.com/chat-app/message/`, datalog, config)
                   .then((response) => {
                     // console.log('doroi')
                   })
@@ -463,7 +463,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                     'Content-Type': 'application/json',                  
                   }
                 };
-                axios.post(`  http://localhost:8000/chat-app/message/`, datalog, config)
+                axios.post(`  https://web-project-wzlk.onrender.com/chat-app/message/`, datalog, config)
                   .then((response) => {
                     // console.log('doroi')
                   })
