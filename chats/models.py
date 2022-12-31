@@ -61,12 +61,17 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
 
 from django_resized import ResizedImageField
 from django.db.models.deletion import CASCADE
-class ImageUpload(models.Model):
+class ImageUpload1(models.Model):
     title = models.CharField(max_length=50)
     # images = models.ImageField('images')
-    images1 = ResizedImageField(scale=0.5, quality=75, upload_to='whatever')
-    images2 = ResizedImageField(scale=0.5, quality=75, upload_to='whatever')
-    owner = models.OneToOneField(User, related_name="img", null=True, on_delete=CASCADE)
+    images1 = ResizedImageField(scale=0.5, quality=75, upload_to='whatever1')
+    owner = models.OneToOneField(User, related_name="img1", null=True, on_delete=CASCADE)
+    updated_date = models.DateTimeField(auto_now_add=True)
+class ImageUpload2(models.Model):
+    title = models.CharField(max_length=50)
+    # images = models.ImageField('images')
+    images2 = ResizedImageField(scale=0.5, quality=75, upload_to='whatever2')
+    owner = models.OneToOneField(User, related_name="img2", null=True, on_delete=CASCADE)
     updated_date = models.DateTimeField(auto_now_add=True)
 
 from datetime import timezone

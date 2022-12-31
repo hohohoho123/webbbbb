@@ -240,14 +240,21 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 
 
-from chats.models import ImageUpload
+from chats.models import ImageUpload1, ImageUpload2
 
-class  ImageUploadSerializer(serializers.ModelSerializer):
+class  ImageUploadSerializer1(serializers.ModelSerializer):
     # def test(self, data):
     #     print(data['images'])
     class Meta:        
-        model = ImageUpload
+        model = ImageUpload1
         fields = '__all__'
+class  ImageUploadSerializer2(serializers.ModelSerializer):
+    # def test(self, data):
+    #     print(data['images'])
+    class Meta:        
+        model = ImageUpload2
+        fields = '__all__'
+
 
 from chats.models import UserProfileModel
 

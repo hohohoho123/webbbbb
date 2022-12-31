@@ -237,18 +237,32 @@ class UpdateProfileView(generics.UpdateAPIView):
 
 #         return Response(serializer.data, status=status.HTTP_200_OK)
 
-from chats.models import ImageUpload
-from chats.serializers import ImageUploadSerializer
+from chats.models import ImageUpload1
+from chats.serializers import ImageUploadSerializer1
 
-class ImageUploadViewSet(viewsets.ModelViewSet):
-    queryset = ImageUpload.objects.all()
+class ImageUploadViewSet1(viewsets.ModelViewSet):
+    queryset = ImageUpload1.objects.all()
 
-    serializer_class = ImageUploadSerializer
+    serializer_class = ImageUploadSerializer1
     authentication_classes = [BearerAuthentication]
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+from chats.models import ImageUpload2
+from chats.serializers import ImageUploadSerializer2
+
+class ImageUploadViewSet2(viewsets.ModelViewSet):
+    queryset = ImageUpload2.objects.all()
+
+    serializer_class = ImageUploadSerializer2
+    authentication_classes = [BearerAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 
 

@@ -11,8 +11,11 @@ from . import views_second
 # from chat_app import settings
 from rest_framework.routers import DefaultRouter
 from rest_framework import routers
-img = DefaultRouter()
-img.register(r'imageupload', ImageUploadViewSet)
+
+img1 = DefaultRouter()
+img2 = DefaultRouter()
+img1.register(r'imageupload1', ImageUploadViewSet1)
+img2.register(r'imageupload2', ImageUploadViewSet2)
 router = routers.DefaultRouter()
 router.register('profile', LeadViewset, 'profile')
 router.register('userprofile', ProfileViewset, 'userprofile')
@@ -27,7 +30,8 @@ urlpatterns = [
     path('message/', MessageView.as_view()),
     path('start-call/', StartCall.as_view()),
     path('end-call/', EndCall.as_view()),
-    path('api/', include(img.urls)),
+    path('', include(img1.urls)),
+    path('', include(img2.urls)),
     # path('location/', Location.as_view()),
     path('location/', views_second.location, name='location'),
     path('', include(router.urls)),

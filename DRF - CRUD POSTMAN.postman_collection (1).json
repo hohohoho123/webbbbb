@@ -1,0 +1,436 @@
+{
+	"info": {
+		"_postman_id": "e3b0f5e2-06a6-46c1-942a-e76e97d77f47",
+		"name": "DRF - CRUD POSTMAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21389345"
+	},
+	"item": [
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token dcd76a7635d215607e8cf041092998f12b6d8baa61e4d86b67a985fd85507358"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/logout/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"lehaquangthinh@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/password_reset/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"password_reset",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password Confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\":\"ee0790da94ba90e574bdc6f3bb79a3ec8a913e36937\",\n    \"password\":\"123456@@Aa\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/password_reset/confirm/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"password_reset",
+						"confirm",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0c2f6e789767e73d1e4ae1036a50b1d750f2129e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 0c2f6e789767e73d1e4ae1036a50b1d750f2129e"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "old_password",
+							"value": "cac",
+							"type": "text"
+						},
+						{
+							"key": "new_password",
+							"value": "Password@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/chat-app/change-password/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"chat-app",
+						"change-password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 9274b940000fbd30702e1a17bda7b6b0b6015b278c57522f5d10436b98a21e04"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"thinh\",\n    \"password\":\"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/chat-app/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"chat-app",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"thinh\",\n    \"email\":\"lehaquangthinh@gmail.com\",\n    \"password\":\"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/chat-app/registration/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"chat-app",
+						"registration",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getprofile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "c641220d420927343b96cbce41e3bf02fd92f87e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8000/chat-app/userprofile/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"chat-app",
+						"userprofile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "imageupload1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "c641220d420927343b96cbce41e3bf02fd92f87e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "images1",
+							"type": "file",
+							"src": "_4smeojn6/Screen Shot 2022-11-29 at 3.39.39 PM.png"
+						},
+						{
+							"key": "title",
+							"value": "1233212131321",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/chat-app/imageupload1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"chat-app",
+						"imageupload1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "imageupload2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "c641220d420927343b96cbce41e3bf02fd92f87e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "images2",
+							"type": "file",
+							"src": "_4smeojn6/Screen Shot 2022-11-29 at 3.39.39 PM.png"
+						},
+						{
+							"key": "title",
+							"value": "1233212131321",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/chat-app/imageupload2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"chat-app",
+						"imageupload2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userprofile/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "c641220d420927343b96cbce41e3bf02fd92f87e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "gender",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "relationship",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "312",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "31231",
+							"type": "text"
+						},
+						{
+							"key": "detaillocation",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "312",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/chat-app/userprofile/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"chat-app",
+						"userprofile",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
