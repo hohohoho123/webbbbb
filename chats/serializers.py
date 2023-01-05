@@ -59,14 +59,14 @@ class MessageModelSerializer(serializers.ModelSerializer):
 
 class UsersWithMessageSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField()
-    photo = serializers.ImageField(source='profile.photo')
+
     online = serializers.BooleanField(source='profile.online')
     status = serializers.CharField(source='profile.status')
     messages = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ('name', 'username', 'photo', 'online', 'status', 'messages')
+        fields = ('name', 'username', 'online', 'status', 'messages')
 
     def get_name(self, obj):
         if obj.username:
