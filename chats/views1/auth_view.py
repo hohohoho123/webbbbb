@@ -17,7 +17,8 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from chats.serializers import ImageUploadSerializer1
+from chats.serializers import ImageUploadSerializer2
 from chats.authentication import BearerAuthentication
 from chats.serializers import RegistrationSerializer, UsersWithMessageSerializer, UserSerializer, UpdateUserSerializer
 
@@ -67,13 +68,28 @@ class LogOutView(APIView):
 
 class UsersView(generics.ListAPIView):
     serializer_class = UsersWithMessageSerializer
+
     authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         users = User.objects.exclude(pk=self.request.user.pk).order_by('-profile__online').all()
+
         # print(users)
         return users
+
+class ImagesView(generics.ListAPIView):
+    #   serializer_class = UsersWithMessageSerializer
+    serializer_class = ImageUploadSerializer1
+    # authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
+    # permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # users = User.objects.exclude(pk=self.request.user.pk).order_by('-profile__online').all()
+        users = ImageUpload1.objects.all()
+        # print(users)
+        return users
+
 
 
 # def notify_others(user: User):
@@ -238,7 +254,7 @@ class UpdateProfileView(generics.UpdateAPIView):
 #         return Response(serializer.data, status=status.HTTP_200_OK)
 
 from chats.models import ImageUpload1
-from chats.serializers import ImageUploadSerializer1
+
 
 class ImageUploadViewSet1(viewsets.ModelViewSet):
     queryset = ImageUpload1.objects.all()
@@ -251,7 +267,7 @@ class ImageUploadViewSet1(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
 from chats.models import ImageUpload2
-from chats.serializers import ImageUploadSerializer2
+
 
 class ImageUploadViewSet2(viewsets.ModelViewSet):
     queryset = ImageUpload2.objects.all()

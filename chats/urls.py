@@ -27,6 +27,7 @@ urlpatterns = [
     path('registration/', RegisterView.as_view()),
     path('logout/', LogOutView.as_view()),
     path('users/', UsersView.as_view()),
+    path('images/', ImagesView.as_view()),
     path('message/', MessageView.as_view()),
     path('start-call/', StartCall.as_view()),
     path('end-call/', EndCall.as_view()),
