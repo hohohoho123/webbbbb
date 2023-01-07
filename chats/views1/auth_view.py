@@ -161,17 +161,17 @@ from django.contrib.auth.models import User
 from chats.models import Profile
 
 class LeadViewset(viewsets.ModelViewSet):
+    queryset = UserProfileModel.objects.all()
+
     serializer_class = ProfileSerializer
     authentication_classes =[BearerAuthentication]
-    # permission_classes = [
-    #     permissions.IsAuthenticated
-    # ]
+    permission_classes = [IsAuthenticated]
     def get_queryset(self):
         print(self.request.user)
         return User.objects.filter(username=self.request.user)
-    def perform_update(self, serializer):
-        # Save with the new value for the target model fields
-        username = self.request.user
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
      # def perform_create(self, serializer):
     #     serializer.save(username=self.request.user)
         # serializer.save(user=self.request.user)

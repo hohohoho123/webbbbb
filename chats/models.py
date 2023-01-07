@@ -83,12 +83,11 @@ from rest_framework import viewsets, permissions
 class UserProfileModel(models.Model):
     gender = models.CharField(max_length=10)
     relationship = models.CharField(max_length=50)
-    description = models.CharField(max_length=500)
     location = models.CharField(max_length=500)
     detaillocation = models.CharField(max_length=500)
     user = models.OneToOneField(User, related_name="userprofile", null=True, on_delete=CASCADE)
     phone_number = models.CharField(max_length=10)
-    birth_date = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return self.user
+    birth_day = models.CharField(max_length=10)
+    # def __str__(self):
+    #     return self.user
 
