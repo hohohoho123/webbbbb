@@ -147,6 +147,16 @@
 		{
 			"name": "User",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3a60d765368cfca6126c2c0a5d4193224585c1ed",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -155,15 +165,15 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/api/user/",
+					"raw": "http://localhost:8000/chat-app/users/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8000",
 					"path": [
-						"api",
-						"user",
+						"chat-app",
+						"users",
 						""
 					]
 				}
@@ -183,7 +193,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"thinh\",\n    \"password\":\"123\"\n}",
+					"raw": "{\n    \"username\":\"thinh12\",\n    \"password\":\"123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -247,7 +257,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "c641220d420927343b96cbce41e3bf02fd92f87e",
+							"value": "3a60d765368cfca6126c2c0a5d4193224585c1ed",
 							"type": "string"
 						}
 					]
@@ -282,7 +292,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "c641220d420927343b96cbce41e3bf02fd92f87e",
+							"value": "d86219cd9c0c11f05ac10619cbd66997c79053b1",
 							"type": "string"
 						}
 					]
@@ -328,7 +338,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "c641220d420927343b96cbce41e3bf02fd92f87e",
+							"value": "3a60d765368cfca6126c2c0a5d4193224585c1ed",
 							"type": "string"
 						}
 					]
@@ -374,7 +384,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "c641220d420927343b96cbce41e3bf02fd92f87e",
+							"value": "d86219cd9c0c11f05ac10619cbd66997c79053b1",
 							"type": "string"
 						}
 					]
@@ -413,6 +423,11 @@
 							"key": "phone_number",
 							"value": "312",
 							"type": "text"
+						},
+						{
+							"key": "birth_day",
+							"value": "123",
+							"type": "text"
 						}
 					]
 				},
@@ -426,6 +441,27 @@
 					"path": [
 						"chat-app",
 						"userprofile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all avatar imgs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/chat-app/images/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"chat-app",
+						"images",
 						""
 					]
 				}
