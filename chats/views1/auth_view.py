@@ -17,7 +17,8 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from chats.serializers import ImageUploadSerializer1
+from chats.serializers import ImageUploadSerializer1 
+from chats.serializers import ImageSerializer
 from chats.serializers import ImageUploadSerializer2
 from chats.authentication import BearerAuthentication
 from chats.serializers import RegistrationSerializer, UsersWithMessageSerializer, UserSerializer, UpdateUserSerializer
@@ -80,14 +81,14 @@ class UsersView(generics.ListAPIView):
 
 class ImagesView(generics.ListAPIView):
     #   serializer_class = UsersWithMessageSerializer
-    serializer_class = ImageUploadSerializer1
+    serializer_class = ImageSerializer
     # authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
     # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         # users = User.objects.exclude(pk=self.request.user.pk).order_by('-profile__online').all()
-        users = ImageUpload1.objects.all()
-        # print(users)
+        users = User.objects.all()
+        print(users)
         return users
 
 

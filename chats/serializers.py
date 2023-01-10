@@ -255,6 +255,16 @@ class  ImageUploadSerializer2(serializers.ModelSerializer):
         model = ImageUpload2
         fields = '__all__'
 
+class  ImageSerializer(serializers.ModelSerializer):
+    # def test(self, data):
+    #     print(data['images'])
+    images1 = serializers.CharField(source='img1.images1')
+    title = serializers.CharField(source='img1.title')
+
+    class Meta:        
+        model = User
+
+        fields = ("username", "images1", "title")
 
 from chats.models import UserProfileModel
 
