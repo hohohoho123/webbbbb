@@ -11,8 +11,13 @@ from . import views_second
 from rest_framework.routers import DefaultRouter
 from rest_framework import routers
 
+img1 = DefaultRouter()
+img2 = DefaultRouter()
+img1.register(r'imageupload1', ImageUploadViewSet1)
+img2.register(r'imageupload2', ImageUploadViewSet2)
 router = routers.DefaultRouter()
 router.register('profile', LeadViewset, 'profile')
+router.register('userprofile', ProfileViewset, 'userprofile')
 
 
 urlpatterns = [
@@ -26,10 +31,11 @@ urlpatterns = [
     path('end-call/', EndCall.as_view()),
     # path('location/', Location.as_view()),
 
-
+    path('', include(img1.urls)),
+    path('', include(img2.urls)),
     # path('location/', Profilene.as_view()),
 
-
+    path('images/', ImagesView.as_view()),
     path('location/', views_second.location, name='location'),
     # path('upload_location/', views_second.upload_location, name='upload_location'),
     path('', include(router.urls)),

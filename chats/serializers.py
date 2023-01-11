@@ -72,7 +72,7 @@ class UsersWithMessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('name', 'username', 'photo', 'online', 'status', 'messages')
+        fields = ('id','name', 'username', 'photo', 'online', 'status', 'messages')
 
     def get_name(self, obj):
         if obj.username:
@@ -246,3 +246,33 @@ class ChangePasswordSerializer(serializers.Serializer):
     """
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+from chats.models import ImageUpload1, ImageUpload2
+
+class  ImageUploadSerializer1(serializers.ModelSerializer):
+    # def test(self, data):
+    #     print(data['images'])
+    class Meta:        
+        model = ImageUpload1
+        fields = '__all__'
+class  ImageUploadSerializer2(serializers.ModelSerializer):
+    # def test(self, data):
+    #     print(data['images'])
+    class Meta:        
+        model = ImageUpload2
+        fields = '__all__'
+from chats.models import UserProfileModel
+
+class UserProfileSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = UserProfileModel
+        fields = '__all__'
+
+
+class  ImageSerializer(serializers.ModelSerializer):
+    # def test(self, data):
+    #     print(data['images'])
+    class Meta:        
+        model = ImageUpload1
+        fields = '__all__'

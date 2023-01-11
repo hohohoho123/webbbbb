@@ -364,3 +364,64 @@ class UpdateProfileView(generics.UpdateAPIView):
 
 #         return Response(serializer.data, status=status.HTTP_200_OK)
 
+from chats.models import ImageUpload1
+
+
+class ImageUploadViewSet1(viewsets.ModelViewSet):
+    queryset = ImageUpload1.objects.all()
+
+    serializer_class = ImageUploadSerializer1
+    authentication_classes = [BearerAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+from chats.models import ImageUpload2
+
+
+class ImageUploadViewSet2(viewsets.ModelViewSet):
+    queryset = ImageUpload2.objects.all()
+
+    serializer_class = ImageUploadSerializer2
+    authentication_classes = [BearerAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+from chats.models import UserProfileModel
+from chats.serializers import ProfileSerializer
+
+class ProfileViewset(viewsets.ModelViewSet):
+    serializer_class = UserProfileSerializer
+    authentication_classes = [BearerAuthentication]
+    permission_classes = [IsAuthenticated]
+    # def get_queryset(self):
+    #     print ("Profile:SADASD")
+    #     print(self.request.user)
+
+    #     return User.objects.filter(username=self.request.user)
+    queryset = UserProfileModel.objects.all()
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+
+
+
+
+
+class ImagesView(generics.ListAPIView):
+    #   serializer_class = UsersWithMessageSerializer
+    serializer_class = ImageUploadSerializer1
+    # authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
+    # permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # users = User.objects.exclude(pk=self.request.user.pk).order_by('-profile__online').all()
+        users = ImageUpload1.objects.all()
+        # print(users)
+        return users
+
+
+

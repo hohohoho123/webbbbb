@@ -149,3 +149,29 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     )
     message.attach_alternative(html_body, "text/html")
     message.send(fail_silently=False)
+from django_resized import ResizedImageField
+from django.db.models.deletion import CASCADE
+class ImageUpload1(models.Model):
+    title = models.CharField(max_length=50)
+    # images = models.ImageField('images')
+    images1 = ResizedImageField(scale=0.5, quality=75, upload_to='whatever1')
+    owner = models.OneToOneField(User, related_name="img1", null=True, on_delete=CASCADE)
+    updated_date = models.DateTimeField(auto_now_add=True)
+class ImageUpload2(models.Model):
+    title = models.CharField(max_length=50)
+    # images = models.ImageField('images')
+    images2 = ResizedImageField(scale=0.5, quality=75, upload_to='whatever2')
+    owner = models.OneToOneField(User, related_name="img2", null=True, on_delete=CASCADE)
+    updated_date = models.DateTimeField(auto_now_add=True)
+
+class UserProfileModel(models.Model):
+    gender = models.CharField(max_length=10)
+    relationship = models.CharField(max_length=50)
+    location = models.CharField(max_length=500)
+    detaillocation = models.CharField(max_length=500)
+    user = models.OneToOneField(User, related_name="userprofile", null=True, on_delete=CASCADE)
+    phone_number = models.CharField(max_length=10)
+    birth_day = models.CharField(max_length=10)
+    # def __str__(self):
+    #     return self.user
+
