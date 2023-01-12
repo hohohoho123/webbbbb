@@ -269,8 +269,12 @@ class  ImageSerializer(serializers.ModelSerializer):
 from chats.models import UserProfileModel
 
 class UserProfileSerializer(serializers.ModelSerializer):
-
-
+    relationship = serializers.CharField(source='userprofile.relationship')
+    gender = serializers.CharField(source='userprofile.gender')
+    location = serializers.CharField(source='userprofile.location')
+    detaillocation = serializers.CharField(source='userprofile.detaillocation')
+    phone_number = serializers.CharField(source='userprofile.phone_number')
+    birth_day = serializers.CharField(source='userprofile.birth_day')
     class Meta:
-        model = UserProfileModel
-        fields = '__all__'
+        model = User
+        fields = ( 'gender','relationship','location','detaillocation','phone_number', 'birth_day')
