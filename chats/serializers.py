@@ -273,4 +273,34 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfileModel
-        fields = '__all__'
+        fields = ('id', 'username', 'gender')
+        
+        
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    model = UserProfileModel
+
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        print(token)
+
+        return token
+    
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        serializer = UserSerializer(self.user)
+        
+        user_data = serializer.data
+
+        # Add custom data to the response
+        data.update({'user': user_data})
+        return data
+    
+    
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+    
+        

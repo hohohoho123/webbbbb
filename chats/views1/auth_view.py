@@ -49,6 +49,7 @@ class Login(ObtainAuthToken):
 
 class RegisterView(CreateAPIView):
     serializer_class = RegistrationSerializer
+    permission_classes = []
 
     def post(self, request, *args, **kwargs):
         super(RegisterView, self).post(request, *args, **kwargs)
@@ -56,7 +57,8 @@ class RegisterView(CreateAPIView):
 
 
 class LogOutView(APIView):
-    authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
+    # authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
         profile = request.user.profile
@@ -70,7 +72,6 @@ class LogOutView(APIView):
 class UsersView(generics.ListAPIView):
     serializer_class = UsersWithMessageSerializer
 
-    authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
@@ -120,7 +121,7 @@ class ChangePasswordView(generics.UpdateAPIView):
     serializer_class = ChangePasswordSerializer
     model = User
 
-    authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
+    # authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_object(self, queryset=None):
@@ -298,6 +299,11 @@ class ProfileViewset(viewsets.ModelViewSet):
     queryset = UserProfileModel.objects.all()
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+        
+
+
+
+        
 
 
 

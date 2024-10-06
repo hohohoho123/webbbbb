@@ -18,7 +18,7 @@ class StartCallSerializer(serializers.Serializer):
 
 
 class StartCall(APIView):
-    authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
+    # authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
     permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):

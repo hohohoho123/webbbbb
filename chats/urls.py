@@ -11,6 +11,10 @@ from . import views_second
 # from chat_app import settings
 from rest_framework.routers import DefaultRouter
 from rest_framework import routers
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 img1 = DefaultRouter()
 img2 = DefaultRouter()
@@ -22,8 +26,8 @@ router.register('userprofile', ProfileViewset, 'userprofile')
 
 
 urlpatterns = [
-    path('api-token-auth/', views.obtain_auth_token),
-    path('login/', Login.as_view()),
+    # path('api-token-auth/', views.obtain_auth_token),
+    # path('login/', Login.as_view()),
     path('registration/', RegisterView.as_view()),
     path('logout/', LogOutView.as_view()),
     path('users/', UsersView.as_view()),
@@ -42,5 +46,7 @@ urlpatterns = [
     # path('update_profile/', UpdateProfileView.as_view(), name='auth_update_profile'),
     # path('test-socket/', test_socket),
     # path("<str:room_name>/",room , name="room"),
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 ]
