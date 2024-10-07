@@ -51,10 +51,14 @@ class MessageSerializer(serializers.Serializer):
 class MessageModelSerializer(serializers.ModelSerializer):
     sender = serializers.CharField(read_only=True, source='sender.username')
     read = serializers.BooleanField(default=True)
+    id = serializers.IntegerField(source='sender.id')
 
     class Meta:
         model = Message
-        fields = ('text', 'sender', 'date_time', 'read')
+        fields = ('id','text', 'sender', 'date_time', 'read')
+    
+    
+        
 
 
 class UsersWithMessageSerializer(serializers.ModelSerializer):
@@ -66,7 +70,7 @@ class UsersWithMessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('name', 'username', 'online', 'status', 'messages')
+        fields = ('id', 'name', 'username', 'online', 'status', 'messages')
 
     def get_name(self, obj):
         if obj.username:
@@ -89,7 +93,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('name', 'username',  'online', 'status', 'messages')
+        fields = ('name', 'username',  'online', 'status', 'messages', 'id')
 
     def get_name(self, obj):
         if obj.first_name:
@@ -260,11 +264,12 @@ class  ImageSerializer(serializers.ModelSerializer):
     #     print(data['images'])
     images1 = serializers.CharField(source='img1.images1')
     title = serializers.CharField(source='img1.title')
+    id = serializers.IntegerField(source='img1.id')
 
     class Meta:        
         model = User
 
-        fields = ("username", "images1", "title")
+        fields = ("id", "username", "images1", "title")
 
 from chats.models import UserProfileModel
 

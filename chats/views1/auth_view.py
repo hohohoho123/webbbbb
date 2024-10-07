@@ -5,6 +5,7 @@ from channels.layers import get_channel_layer
 from django.contrib.auth.models import User
 from django.core import serializers
 from django.http import HttpResponse
+from django.conf import settings
 
 # Create your views here.
 from django.shortcuts import render
@@ -14,7 +15,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.decorators import api_view
 from rest_framework.generics import CreateAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from chats.serializers import ImageUploadSerializer1 
@@ -84,10 +85,11 @@ class ImagesView(generics.ListAPIView):
     #   serializer_class = UsersWithMessageSerializer
     serializer_class = ImageSerializer
     # authentication_classes = [SessionAuthentication, BasicAuthentication, BearerAuthentication]
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         # users = User.objects.exclude(pk=self.request.user.pk).order_by('-profile__online').all()
+        print(f'media {settings.MEDIA_ROOT}')
         users = User.objects.all()
         print(users)
         return users
@@ -182,7 +184,7 @@ class LeadViewset(viewsets.ModelViewSet):
     queryset = UserProfileModel.objects.all()
 
     serializer_class = ProfileSerializer
-    authentication_classes =[BearerAuthentication]
+    # authentication_classes =[BearerAuthentication]
     permission_classes = [IsAuthenticated]
     def get_queryset(self):
         print(self.request.user)
@@ -210,7 +212,7 @@ class LeadViewset(viewsets.ModelViewSet):
 
 class UpdateProfileView(generics.UpdateAPIView):
     model = User
-    authentication_classes = [BearerAuthentication]
+    # authentication_classes = [BearerAuthentication]
     permission_classes = [IsAuthenticated]
     serializer_class = UpdateUserSerializer
     def get_queryset(self):
@@ -262,7 +264,7 @@ class ImageUploadViewSet1(viewsets.ModelViewSet):
     queryset = ImageUpload1.objects.all()
 
     serializer_class = ImageUploadSerializer1
-    authentication_classes = [BearerAuthentication]
+    # authentication_classes = [BearerAuthentication]
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
@@ -275,7 +277,7 @@ class ImageUploadViewSet2(viewsets.ModelViewSet):
     queryset = ImageUpload2.objects.all()
 
     serializer_class = ImageUploadSerializer2
-    authentication_classes = [BearerAuthentication]
+    # authentication_classes = [BearerAuthentication]
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
@@ -289,7 +291,7 @@ from chats.serializers import ProfileSerializer
 
 class ProfileViewset(viewsets.ModelViewSet):
     serializer_class = UserProfileSerializer
-    authentication_classes = [BearerAuthentication]
+    # authentication_classes = [BearerAuthentication]
     permission_classes = [IsAuthenticated]
     # def get_queryset(self):
     #     print ("Profile:SADASD")
